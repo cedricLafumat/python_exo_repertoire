@@ -1,9 +1,16 @@
-repertoire = {
-    "toto" : "0601020304",
-    "tata" : "0706050403"
-}
+repertoire = [{
+    "nom" : "toto",
+    "numero" : "0605040302",
+    "mail" : "toto@campus"
+    },{
+    "nom" : "tata",
+    "numero" : "0102030405",
+    "mail" : "tata@campus"
+    }
+]
 
-#repertoire = {}
+print(repertoire[0], repertoire[1])
+
 
 def saisie_menu():
     saisie_utilisateur = input(
@@ -17,22 +24,23 @@ def saisie_menu():
     return saisie_utilisateur
 
 def listing(repertoire):
-    for nom, telephone in repertoire.items():
-        print("Nom : {}\nNuméro de téléphone : {}".format(nom, telephone))
+    for contact in repertoire:
+        print("Nom : {}\nNuméro de téléphone : {}\n@ : {}\n".format(contact["nom"], contact["numero"], contact["mail"]))
 
-def ajout_contact(repertoire, nom, numero):
+def ajout_contact(repertoire, nom, numero, mail):
     presence_contact = verif_presence(repertoire, nom)
     if presence_contact == True:
         print("\n{} est déjà présent dans le répertoire".format(nom))
     else:
-        repertoire[nom] = numero
+        repertoire.append({"nom" : nom, "numero" : numero, "mail" : mail})
 
 def suppression_contact(repertoire, nom):
     presence_contact = verif_presence(repertoire, nom)
-    if presence_contact == False:
-        print("\n{} n'est pas présent dans le répertoire".format(nom))
-    else:
+    if presence_contact == True:
         del repertoire[nom]
+        print("\nContact supprimé")
+    else:
+        print("\n{} n'est pas présent dans le répertoire".format(nom))
 
 def recherche_contact(repertoire, nom):
     rech_contact = {}
@@ -46,11 +54,13 @@ def modification_contact(repertoire, nom):
     if presence_contact == True:
         numero_a_modifier = input("Nouveau numéro : ")
         repertoire[nom] = numero_a_modifier
+    else:
+        print("\n{} n'est pas présent dans le répertoire".format(nom))
 
 def verif_presence(repertoire, nom):
     presence_contact = False
-    for nom_verif in repertoire.keys():
-        if nom_verif == nom:
+    for contact in repertoire:
+        if contact["nom"] == nom:
             presence_contact = True
             break
     return presence_contact
@@ -64,7 +74,8 @@ while True:
         print("Vous avez choisi d'ajouter un contact\n")
         nom_a_ajouter = input("Ecrivez le nom du contact à ajouter : ").lower()
         numero_a_ajouter = input("Ecrivez le numéro du contact : ")
-        ajout_contact(repertoire, nom_a_ajouter, numero_a_ajouter)
+        mail_a_ajouter = input("Ecrivez l'adresse mail du contact : ")
+        ajout_contact(repertoire, nom_a_ajouter, numero_a_ajouter, mail_a_ajouter)
     elif saisie_utilisateur == "S":
         print("Vous avez choisi de supprimer un contact\n")
         nom_a_supprimer = input("Quel contact voulez-vous supprimer ? ").lower()

@@ -1,17 +1,15 @@
 def ajout_contact(repertoire, nom, numero, mail):
-    if verif_presence(repertoire, nom):
+    if verif_presence(repertoire, numero):
         return False
     else:
         repertoire.append({"nom" : nom, "numero" : numero, "mail" : mail})
         return True
 
-def verif_presence(repertoire, nom):
-    presence_contact = False
+def verif_presence(repertoire, numero):
     for contact in repertoire:
-        if contact["nom"] == nom:
-            presence_contact = True
-            break
-    return presence_contact
+        if contact["numero"] == numero:
+            return True
+    return False
 
 def suppression_contact(repertoire, nom):
     for contact in repertoire:
@@ -33,4 +31,4 @@ def modification_contact(repertoire, nom):
             numero_a_modifier = input("Nouveau numéro : ")
             contact["numero"] = numero_a_modifier
             return True
-    return  False
+    return False

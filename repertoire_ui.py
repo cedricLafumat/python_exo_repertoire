@@ -5,7 +5,7 @@ repertoire = [{
     "numero" : "0605040302",
     "mail" : "toto@campus"
     },{
-    "nom" : "tata",
+    "nom" : "toto",
     "numero" : "0102030405",
     "mail" : "tata@campus"
     }
@@ -25,7 +25,7 @@ def saisie_menu():
 
 def listing(repertoire):
     for contact in repertoire:
-        print("Nom : {}\nNuméro de téléphone : {}\nMail : {}\n".format(contact["nom"], contact["numero"], contact["mail"]))
+        print("Nom : '{}'\nNuméro de téléphone : {}\nMail : {}\n".format(contact["nom"], contact["numero"], contact["mail"]))
 
 while True:
     saisie_utilisateur = saisie_menu()
@@ -41,7 +41,7 @@ while True:
         if ajout:
             print("\nContact ajouté")
         else:
-            print("\n{} est déjà présent dans le répertoire".format(nom_a_ajouter))
+            print("\n'{}' est déjà présent dans le répertoire".format(nom_a_ajouter))
     elif saisie_utilisateur == "S":
         print("Vous avez choisi de supprimer un contact\n")
         nom_a_supprimer = input("Quel contact voulez-vous supprimer ? ").lower()
@@ -49,7 +49,7 @@ while True:
         if suppression:
             print("\nContact supprimé")
         else:
-            print("\n{} n'est pas présent dans le répertoire".format(nom_a_supprimer))
+            print("\n'{}' n'est pas présent dans le répertoire".format(nom_a_supprimer))
     elif saisie_utilisateur == "R":
         print("Vous avez choisi de faire une recherche\n")
         nom_a_rechercher = input("Quel contact recherchez-vous ? ").lower()
@@ -58,7 +58,7 @@ while True:
             print("\nContact trouvé\n")
             listing(resultats)
         else:
-            print("\n{} n'est pas présent dans le répertoire".format(nom_a_rechercher))
+            print("\n'{}' n'est pas présent dans le répertoire".format(nom_a_rechercher))
     elif saisie_utilisateur == "M":
         print("Vous avez choisi de modifier le numéro d'un contact\n")
         nom_a_modifier = input("Quel contact voulez-vous modifier? ").lower()
@@ -66,6 +66,6 @@ while True:
         if modification:
             print("\nModification effectué")
         else:
-            print("\n{} n'est pas présent dans le répertoire".format(nom_a_modifier))
+            print("\n'{}' n'est pas présent dans le répertoire".format(nom_a_modifier))
     elif saisie_utilisateur == "T":
         exit()

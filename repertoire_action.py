@@ -1,13 +1,5 @@
-repertoire = [{
-    "nom" : "toto",
-    "numero" : "0605040302",
-    "mail" : "toto@campus"
-    },{
-    "nom" : "toto",
-    "numero" : "0102030405",
-    "mail" : "tata@campus"
-    }
-]
+import repertoire_utils_dict as repertoire_utils
+
 
 def ajouter_personne(repertoire, nom=None, telephone=None, mail=None):
     if not verif_presence(repertoire, telephone):

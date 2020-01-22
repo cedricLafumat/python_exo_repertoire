@@ -37,10 +37,6 @@ while True:
         print("Vous avez choisi de supprimer un contact\n")
         nom_a_supprimer = input("Quel contact voulez-vous supprimer ? ").lower()
         suppression = supprimer_personne(repertoire, nom_a_supprimer)
-        if suppression:
-            print("\nContact supprimé")
-        else:
-            print("\n'{}' n'est pas présent dans le répertoire".format(nom_a_supprimer))
 
     elif saisie_utilisateur == "R":
         print("Vous avez choisi de faire une recherche\n")

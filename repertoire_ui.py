@@ -8,7 +8,7 @@ def saisie_menu():
         "S pour Supprimer un contact\n"
         "R pour Rechercher un contact\n"
         "M pour Modifier le numéro d'un contact\n"
-        "T pour Sortir du programme\n"
+        "Q pour Quitter le programme\n"
         "Choix : "
         ).upper()
     return saisie_utilisateur

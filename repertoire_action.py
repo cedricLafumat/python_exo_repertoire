@@ -1,9 +1,18 @@
-def ajout_contact(repertoire, nom, numero, mail):
-    if verif_presence(repertoire, numero):
-        return False
-    else:
-        repertoire.append({"nom" : nom, "numero" : numero, "mail" : mail})
-        return True
+repertoire = [{
+    "nom" : "toto",
+    "numero" : "0605040302",
+    "mail" : "toto@campus"
+    },{
+    "nom" : "toto",
+    "numero" : "0102030405",
+    "mail" : "tata@campus"
+    }
+]
+
+def ajouter_personne(repertoire, nom=None, telephone=None, mail=None):
+    if not verif_presence(repertoire, telephone):
+        repertoire.append({"nom" : nom, "numero" : telephone, "mail" : mail})
+    return repertoire
 
 def verif_presence(repertoire, numero):
     for contact in repertoire:
@@ -11,18 +20,17 @@ def verif_presence(repertoire, numero):
             return True
     return False
 
-def suppression_contact(repertoire, nom):
+def supprimer_personne(repertoire, nom):
     for contact in repertoire:
         if contact["nom"] == nom:
             repertoire.remove(contact)
-            return True
-    return False
+    return repertoire
 
-def recherche_contact(repertoire, nom):
+def chercher_personnes(repertoire, nom=None, telephone=None, mail=None):
     resultats = []
     for contact in repertoire:
         if contact["nom"] == nom:
-            ajout_contact(resultats, contact["nom"], contact["numero"], contact["mail"])
+            ajouter_personne(resultats, contact["nom"], contact["numero"], contact["mail"])
     return resultats
 
 def modification_contact(repertoire, nom):
@@ -32,3 +40,6 @@ def modification_contact(repertoire, nom):
             contact["numero"] = numero_a_modifier
             return True
     return False
+
+def get_rep():
+    return repertoire

@@ -17,7 +17,7 @@ def verif_presence(repertoire, numero):
 def supprimer_personne(repertoire, nom):
     for contact in repertoire:
         if contact["nom"] == nom:
-            repertoire.remove(contact)
+            repertoire_utils.del_rep(repertoire, contact)
     return repertoire
 
 def chercher_personnes(repertoire, nom=None, telephone=None, mail=None):

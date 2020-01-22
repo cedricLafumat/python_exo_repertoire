@@ -15,3 +15,6 @@ def get_rep():
 def append_rep(repertoire, personne):
     repertoire.append({"nom" : personne.get("nom"), "telephone" : personne.get("telephone"),
                        "mail" : personne.get("mail")})
+
+def del_rep(repertoire, personne):
+    repertoire.remove(personne)

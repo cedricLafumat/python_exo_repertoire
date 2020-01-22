@@ -1,11 +1,17 @@
 repertoire = [{
     "nom" : "toto",
-    "numero" : "0605040302",
+    "telephone" : "0605040302",
     "mail" : "toto@campus"
     },{
     "nom" : "tata",
-    "numero" : "0102030405",
+    "telephone" : "0102030405",
     "mail" : "tata@campus"
     }
 ]
 
+def get_rep():
+    return repertoire
+
+def append_rep(repertoire, personne):
+    repertoire.append({"nom" : personne.get("nom"), "telephone" : personne.get("telephone"),
+                       "mail" : personne.get("mail")})

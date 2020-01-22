@@ -1,14 +1,16 @@
 import repertoire_utils_dict as repertoire_utils
 
+repertoire = repertoire_utils.get_rep()
 
 def ajouter_personne(repertoire, nom=None, telephone=None, mail=None):
     if not verif_presence(repertoire, telephone):
-        repertoire.append({"nom" : nom, "numero" : telephone, "mail" : mail})
+        personne = {"nom" : nom, "telephone" : telephone, "mail" : mail}
+        repertoire_utils.append_rep(repertoire, personne)
     return repertoire
 
 def verif_presence(repertoire, numero):
     for contact in repertoire:
-        if contact["numero"] == numero:
+        if contact["telephone"] == numero:
             return True
     return False
 
@@ -22,7 +24,7 @@ def chercher_personnes(repertoire, nom=None, telephone=None, mail=None):
     resultats = []
     for contact in repertoire:
         if contact["nom"] == nom:
-            ajouter_personne(resultats, contact["nom"], contact["numero"], contact["mail"])
+            ajouter_personne(resultats, contact["nom"], contact["telephone"], contact["mail"])
     return resultats
 
 def modification_contact(repertoire, nom):
@@ -32,6 +34,3 @@ def modification_contact(repertoire, nom):
             contact["numero"] = numero_a_modifier
             return True
     return False
-
-def get_rep():
-    return repertoire

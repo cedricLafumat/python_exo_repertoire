@@ -15,12 +15,9 @@ def saisie_menu():
 
 def listing(repertoire):
     for contact in repertoire:
-        print("Nom : '{}'\nNuméro de téléphone : '{}'\nMail : '{}'\n".format(contact["nom"], contact["numero"], contact["mail"]))
-
-print(repertoire)
+        print("Nom : '{}'\nNuméro de téléphone : '{}'\nMail : '{}'\n".format(contact["nom"], contact["telephone"], contact["mail"]))
 
 while True:
-    repertoire = get_rep()
     saisie_utilisateur = saisie_menu()
     if saisie_utilisateur == "L":
         print("Vous avez choisi de lister le répertoire\n")

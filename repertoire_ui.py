@@ -14,10 +14,12 @@ def saisie_menu():
     return saisie_utilisateur
 
 def listing(repertoire):
-    for contact in repertoire:
+    liste_contact = lister_tous_les_contacts(repertoire)
+    for contact in liste_contact:
         print("Nom : '{}'\nNuméro de téléphone : '{}'\nMail : '{}'\n".format(contact["nom"], contact["telephone"], contact["mail"]))
 
 while True:
+    repertoire = repertoire_utils.get_rep()
     saisie_utilisateur = saisie_menu()
     if saisie_utilisateur == "L":
         print("Vous avez choisi de lister le répertoire\n")
@@ -33,6 +35,8 @@ while True:
     elif saisie_utilisateur == "S":
         print("Vous avez choisi de supprimer un contact\n")
         nom_a_supprimer = input("Quel contact voulez-vous supprimer ? ").lower()
+        contact_trouve = chercher_personnes(repertoire, nom_a_supprimer)
+        listing(contact_trouve)
         suppression = supprimer_personne(repertoire, nom_a_supprimer)
 
     elif saisie_utilisateur == "R":

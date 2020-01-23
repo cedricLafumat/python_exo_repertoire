@@ -19,3 +19,9 @@ def del_rep(repertoire, personne):
     fichier.write(json.dumps(repertoire))
     fichier.close()
     return repertoire
+
+def lister_tous_les_contacts(repertoire):
+    liste_contacts = []
+    for contact in repertoire:
+        liste_contacts.append(contact)
+    return liste_contacts
